@@ -1,5 +1,7 @@
-export default function Modal({onClose}) {
-    return (
+import { createPortal } from "react-dom";
+
+export default function Modal({toggleModal}) {
+    return createPortal(
 
 <>
 <div class="modal fixed w-full h-full top-0 left-0 flex items-center justify-center">
@@ -24,15 +26,12 @@ export default function Modal({onClose}) {
                 lacus sit amet egestas rhoncus, turpis nulla laoreet urna, nec ultricies nibh urna eu sapien. </p>
 
             <div class="mt-4 flex justify-end">
-                <button onClick={onClose} class="modal-close px-4 bg-gray-100 p-3 rounded-lg text-black hover:bg-gray-200">Cancel</button>
-                <button class="px-4 bg-purple-500 p-3 ml-3 rounded-lg text-white hover:bg-purple-400">Save</button>
+                <button onClick={toggleModal} class="modal-close px-4 bg-gray-100 p-3 rounded-lg text-black hover:bg-gray-200">Cancel</button>
             </div>
         </div>
     </div>
 
 </div>
-        </>
-        
-    );
+        </>, document.getElementById("portal"));
 };  
 

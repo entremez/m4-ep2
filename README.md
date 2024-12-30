@@ -4,4 +4,4 @@
 - se utilizan las sintaxis corta del fragment <></>
 - se agregan propTypes para validar los datos
 - se utilizan HOC en la lógica DoctorsCard/DoctorsGrid
-- se agrega portal para un modal
+- se agrega portal para un modal sin interferir en capa principal

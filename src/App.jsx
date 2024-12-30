@@ -3,8 +3,8 @@ import Footer from "./components/Footer"
 import DoctorsGrid from "./components/DoctorsGrid"
 import ServiceList from "./components/ServiceList"
 import AppointmentForm from "./components/AppointmentForm"
-import Portals from "./components/Portals"
 import { useState } from "react";
+import Modal from "./components/Modal"
 
 function App() {
 
@@ -134,7 +134,10 @@ function App() {
     "Oncología",
     "Anestesiología",];
 
-  const [modal, setModal] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleModal = () => {
+      setIsOpen(!isOpen);
+    };
 
   return (
     <>
@@ -142,11 +145,9 @@ function App() {
       <DoctorsGrid doctors={doctors} />
       <ServiceList services={services} />
       <AppointmentForm doctors={doctors}/>
-      <button onClick={() => setModal(true)}
-      className="hover:shadow-form w-full rounded-md bg-[#27a1f3] py-3 px-8 text-center text-base font-semibold text-white outline-none">MODAL</button>
-
+      <button onClick={toggleModal} className="hover:shadow-form w-full rounded-md bg-[#27a1f3] py-3 px-8 text-center text-base font-semibold text-white outline-none">MODAL</button>
+      {isOpen && <Modal toggleModal={toggleModal}/>}
       <Footer />
-      <Portals isOpen={modal}/>
     </>
   )
 }
